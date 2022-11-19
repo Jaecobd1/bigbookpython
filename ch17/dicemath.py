@@ -45,7 +45,7 @@ D3a = (['+-------+',
         '|     0 |',
         '+-------+'],3)
 
-D3a = (['+-------+',
+D3b = (['+-------+',
         '|     0 |',
         '|   0   |',
         '| 0     |',
@@ -164,3 +164,19 @@ while time.time() < startTime + QUIZ_DURATION: # Main game loop.
         for cy in range(CANVAS_HEIGHT):
             for cx in range(CANVAS_WIDTH):
                 print(canvas.get((cx , cy), ' '), end='')
+                print() # Print a new line.
+
+            # Let the player enter their answer:
+            response = input('Enter the sum: ').strip()
+            if response.isdecimal() and int(response) == sumAnswer:
+                correctAnswers += 1
+            else:
+                print('Incorrect, the answer is', sumAnswer)
+                time.sleep(2)
+                incorrectAnswers += 1
+
+#Display the final score:
+score = (correctAnswers * REWARD) - (incorrectAnswers * PENALTY)
+print('Correct: ', correctAnswers)
+print('Incorrect: ', incorrectAnswers)
+print('Score: ', score)
